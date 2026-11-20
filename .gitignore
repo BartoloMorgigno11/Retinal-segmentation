@@ -1,0 +1,22 @@
+# MATLAB temporary files
+*.asv
+*.m~
+*.mlx.autosave
+*.fig
+
+# Data assets kept out of version control
+data/images/
+groundtruth/*.xml
+results/
+example_results/
+example_images/
+models/*.mat
+*.mat
+
+# Code generation outputs
+codegen/
+slprj/
+
+# OS metadata
+.DS_Store
+Thumbs.db
