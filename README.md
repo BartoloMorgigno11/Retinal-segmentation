@@ -36,6 +36,33 @@ MATLAB research pipeline for exploring retinal fundus-image segmentation. It pro
 
 4. Choose an image you are authorised to use. Masks and overlays are written to `results/`.
 
+
+## Manual acceptance checks (MATLAB required)
+
+MATLAB and the specified toolboxes are required to exercise the segmentation
+algorithm. There is intentionally no claim of a passing headless GitHub CI:
+no MATLAB runtime or redistributable retinal images are bundled.
+
+1. Start `Main`, cancel the image picker. Confirm that existing results in
+   `results/` remain untouched.
+2. Select an **authorised** fundus image. Confirm `mask_vasi.png`,
+   `overlay_vasi.png`, `disco_mask.png` and `disco_overlay.png` exist and
+   have the expected dimensions (the pipeline resizes to 584 x 565).
+3. Choose lesion processing (option 3) and inspect the resulting masks/overlays
+   for gross artifacts. Do not treat visual inspection as clinical validation.
+4. If an optional severity model is configured, choose *No* at its confirmation
+   prompt and verify that previous results are not overwritten.
+5. Record the MATLAB/toolbox versions, input provenance, and any failures.
+
+Only clear `results/` after a valid image is selected and any optional
+model confirmation has been accepted. The pipeline is interactive and writes
+fixed filenames; do not run concurrent sessions against the same directory.
+
+**Scientific validation remains open:** the repository does not include
+licensed fundus data or ground-truth metrics such as Dice/IoU and sensitivity.
+Any future quantitative claims require a separately sourced and authorised
+benchmark, not synthetic images passed off as clinical evidence.
+
 ## Data and model policy
 
 No fundus images, annotations, generated results, or neural-network weights are distributed in this repository.
@@ -51,13 +78,13 @@ If you are authorised to use a compatible `dr_severity_regnet.mat`, place it in 
 
 ## Repository layout
 
-- `Main.m` â€” interactive orchestration and optional local-model loading.
-- `SegmentaVasi.m` â€” vessel segmentation.
-- `SegmentaDiscoOttico.m` â€” optic-disc segmentation.
-- `SegmentaEssudati.m` â€” exudate segmentation.
-- `SegmentaEmorragieMicroaneurismi.m` â€” haemorrhage and microaneurysm segmentation.
-- `XML/` â€” helpers for local XML annotations.
-- `data/`, `groundtruth/`, `models/` â€” documented local-only asset locations.
+- `Main.m` — interactive orchestration and optional local-model loading.
+- `SegmentaVasi.m` — vessel segmentation.
+- `SegmentaDiscoOttico.m` — optic-disc segmentation.
+- `SegmentaEssudati.m` — exudate segmentation.
+- `SegmentaEmorragieMicroaneurismi.m` — haemorrhage and microaneurysm segmentation.
+- `XML/` — helpers for local XML annotations.
+- `data/`, `groundtruth/`, `models/` — documented local-only asset locations.
 
 ## Limitations
 
