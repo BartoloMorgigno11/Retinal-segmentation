@@ -39,9 +39,16 @@ MATLAB research pipeline for exploring retinal fundus-image segmentation. It pro
 
 ## Manual acceptance checks (MATLAB required)
 
-MATLAB and the specified toolboxes are required to exercise the segmentation
-algorithm. There is intentionally no claim of a passing headless GitHub CI:
-no MATLAB runtime or redistributable retinal images are bundled.
+The repository now includes a GitHub Actions MATLAB smoke test built from
+**artificial RGB patterns** (see `tests/runSyntheticSmoke.m`). The CI installs
+MATLAB and the image-processing/statistics toolboxes, invokes all four
+segmentation modules, and checks that expected masks and overlays are created
+with the correct dimensions. It needs no licensed medical images or local
+MATLAB installation. This is a pipeline execution check, **not** evidence of
+clinical accuracy, robustness, or GUI behavior.
+
+The following interactive acceptance checks remain optional when MATLAB and
+authorised real images are available:
 
 1. Start `Main`, cancel the image picker. Confirm that existing results in
    `results/` remain untouched.
