@@ -32,18 +32,6 @@ function Main
     end
     RGBorig = imread(fullfile(pn, fn));
 
-    % Preserve previous results if the user cancels or the selected image
-    % cannot be read. Clear old generated files only after input is valid.
-    if exist(resultsDir, 'dir')
-        oldFiles = dir(fullfile(resultsDir, '*'));
-        oldFiles = oldFiles(~[oldFiles.isdir]);
-        for k = 1:numel(oldFiles)
-            delete(fullfile(resultsDir, oldFiles(k).name));
-        end
-    else
-        mkdir(resultsDir);
-    end
-
     %% Severity estimation (optional)
     modelFile = locateFirstExisting(modelCandidates);
     if ~isempty(modelFile)
@@ -67,6 +55,18 @@ function Main
         end
     else
         warning('No severity model found. The pipeline will continue without this step.');
+    end
+
+    % Preserve previous results if the user cancels or the selected image
+    % cannot be read. Clear old generated files only after input is accepted.
+    if exist(resultsDir, 'dir')
+        oldFiles = dir(fullfile(resultsDir, '*'));
+        oldFiles = oldFiles(~[oldFiles.isdir]);
+        for k = 1:numel(oldFiles)
+            delete(fullfile(resultsDir, oldFiles(k).name));
+        end
+    else
+        mkdir(resultsDir);
     end
 
     %% Resize image for the segmentation pipeline
