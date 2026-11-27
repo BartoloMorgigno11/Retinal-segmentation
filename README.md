@@ -6,6 +6,8 @@ MATLAB research pipeline for exploring retinal fundus-image segmentation. It pro
 
 > **Research and educational use only.** This project is not clinically validated and must not be used for diagnosis, screening, triage, treatment decisions, or any other medical purpose.
 
+**Project authorship:** Collaborative project by Bartolo Morgigno and Erica Porcelli.
+
 ## Features
 
 - Interactive selection of a local retinal fundus image.
