@@ -1,5 +1,7 @@
 # Retinal Fundus Segmentation
 
+[![MATLAB synthetic smoke test](https://github.com/BartoloMorgigno11/Retinal-segmentation/actions/workflows/matlab-smoke.yml/badge.svg)](https://github.com/BartoloMorgigno11/Retinal-segmentation/actions/workflows/matlab-smoke.yml)
+
 MATLAB research pipeline for exploring retinal fundus-image segmentation. It produces masks and overlays for blood vessels, optic disc, exudates, and haemorrhages/microaneurysms. An optional pre-trained network can display an experimental severity-related output when an authorised local model is available.
 
 > **Research and educational use only.** This project is not clinically validated and must not be used for diagnosis, screening, triage, treatment decisions, or any other medical purpose.
@@ -98,6 +100,7 @@ If you are authorised to use a compatible `dr_severity_regnet.mat`, place it in 
 - The thresholds and morphology settings are experimental and dataset-dependent.
 - Outputs depend strongly on image quality, field of view, illumination, and camera/device characteristics.
 - The optional model output is not a medical-grade severity assessment.
+- The current `emorragie_mask.png` output contains the vessel-exclusion mask (`BWem`, the dilated vessel mask when available, or an empty mask otherwise), rather than a haemorrhage-only mask. Do not interpret that filename as a lesion segmentation; `emorragie_solo_mask.png` is the current haemorrhage-only output.
 
 ## License
 
